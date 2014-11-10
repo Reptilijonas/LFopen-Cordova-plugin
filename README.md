@@ -1,0 +1,2 @@
+LFopen-Cordova-plugin
+=====================
