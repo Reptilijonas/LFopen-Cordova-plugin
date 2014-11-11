@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+            id="com.example.funfitness" version="0.0.1">
+        <name>LFopen/name>
+        <description>Cordova LFopen API Plugin</description>
+        <license>Apache 2.0</license>
+        <keywords>cordova,lfopen</keywords>
+        <js-module src="pluginInterface.js" name="lfopen">
+            <clobbers target="lfopen" />
+        </js-module>
+        <platform name="android">
+            <config-file target="res/xml/config.xml" parent="/*">
+                <feature name="Echo">
+                    <param name="android-package" value="com.example.funfitness.Echo"/>
+                </feature>
+            </config-file>
+            <source-file src="src/com/example/funfitness/Echo.java" target-dir="src/com/example/funfitness" />
+            <source-file src="libs/lfopen-api.jar" target-dir="libs" />
+        </platform>
+    </plugin>

@@ -93,7 +93,8 @@
       <param name="android-package" value="org.apache.cordova.SplashScreen"/>
     </feature>
     <feature name="Echo">
-      <param name="android-package" value="org.apache.cordova.Echo"/>
+      <param name="android-package" value="com.example.funfitness.Echo"/>
+      <param name="onload" value="true" />
     </feature>
     <feature name="Globalization">
       <param name="android-package" value="org.apache.cordova.Globalization"/>
