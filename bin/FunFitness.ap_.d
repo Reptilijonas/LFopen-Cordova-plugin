@@ -10,6 +10,7 @@ C:\Users\Giedrius\Desktop\funfitness\res\drawable-xhdpi\icon.png \
 C:\Users\Giedrius\Desktop\funfitness\res\drawable-xhdpi\ic_launcher.png \
 C:\Users\Giedrius\Desktop\funfitness\res\layout\main.xml \
 C:\Users\Giedrius\Desktop\funfitness\res\values\strings.xml \
+C:\Users\Giedrius\Desktop\funfitness\res\xml\accessory_data.xml \
 C:\Users\Giedrius\Desktop\funfitness\res\xml\config.xml \
 C:\Users\Giedrius\Desktop\funfitness\bin\res\drawable\icon.png \
 C:\Users\Giedrius\Desktop\funfitness\bin\res\drawable-hdpi\icon.png \
