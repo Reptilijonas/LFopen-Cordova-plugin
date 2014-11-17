@@ -1,5 +1,6 @@
-window.echo = function(str, callback) {
-    cordova.exec(callback, function(err) {
-        callback('Nothing to echo.');
-    }, "Echo", "echo", [str]);
-};
+var plugin = {
+    test: function(str, successCallback, errorCallback) {
+        cordova.exec(successCallback, errorCallback, "Echo", "echo", [str]);
+    };
+}
+module.exports = plugin;
