@@ -8,12 +8,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 
 public class Echo extends CordovaPlugin {
-
-	@Override
-	public void initialize(CordovaInterface cordova, CordovaWebView webView) {
-	    super.initialize(cordova, webView);
-	    // your init code here
-	}
 	
 	@Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
