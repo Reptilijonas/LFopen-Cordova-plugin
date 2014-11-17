@@ -7,7 +7,7 @@
         <license>Apache 2.0</license>
         <keywords>cordova, lfopen</keywords>
         <js-module src="pluginInterface.js" name="PluginInterface">
-            <clobbers target="pluginInterface" />
+            <clobbers target="window.pluginInterface" />
         </js-module>
         <platform name="android">
             <config-file target="res/xml/config.xml" parent="/*">
