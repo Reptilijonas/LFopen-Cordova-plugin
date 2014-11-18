@@ -22,6 +22,5 @@
         </config-file>
 
         <source-file src="src/android/LFopen.java" target-dir="src/com/giedrius/lfopen" />
-		<source-file src="libs/lfopen-api.jar" target-dir="libs" />
      </platform>          
 </plugin>
