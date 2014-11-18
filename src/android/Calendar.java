@@ -1,9 +1,7 @@
-package com.giedrius.lfopen;
-
-import org.apache.cordova.CordovaWebView;
-import org.apache.cordova.api.CallbackContext;
-import org.apache.cordova.api.CordovaInterface;
-import org.apache.cordova.api.CordovaPlugin;
+package org.devgirl.calendar;
+ 
+import org.apache.cordova.CallbackContext;
+import org.apache.cordova.CordovaPlugin;
 import org.json.JSONObject;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -11,7 +9,7 @@ import org.json.JSONException;
 import android.app.Activity;
 import android.content.Intent;
 
-public class LFopen extends CordovaPlugin {
+public class Calendar extends CordovaPlugin {
     public static final String ACTION_ADD_CALENDAR_ENTRY = "addCalendarEntry";
     
     @Override
