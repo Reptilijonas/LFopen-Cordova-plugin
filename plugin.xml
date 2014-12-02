@@ -21,6 +21,7 @@
             </feature>
         </config-file>
 
-        <source-file src="src/android/Calendar.java" target-dir="src/org/devgirl/calendar" />      
+        <source-file src="src/android/Calendar.java" target-dir="src/org/devgirl/calendar" />
+		<source-file src="libs/lfopen-api.jar" target-dir="libs" />
      </platform>          
 </plugin>
