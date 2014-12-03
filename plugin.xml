@@ -17,11 +17,11 @@
     <platform name="android">
         <config-file target="res/xml/config.xml" parent="/*">
             <feature name="Calendar">
-                <param name="android-package" value="org.devgirl.calendar.Calendar"/>
+                <param name="android-package" value="com.giedrius.plugin.Calendar"/>
             </feature>
         </config-file>
 
-        <source-file src="src/android/Calendar.java" target-dir="src/org/devgirl/calendar" />
+        <source-file src="src/com/giedrius/plugin/Calendar.java" target-dir="src/com/giedrius/plugin" />
 		<source-file src="libs/lfopen-api.jar" target-dir="libs" />
      </platform>          
 </plugin>
