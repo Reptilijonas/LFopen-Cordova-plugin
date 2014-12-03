@@ -9,7 +9,7 @@
     <keywords>phonegap,calendar</keywords>
 
 
-    <js-module src="../../www/calendar.js" name="Calendar">
+    <js-module src="www/calendar.js" name="Calendar">
         <clobbers target="window.calendar" />
     </js-module>
 
@@ -21,7 +21,7 @@
             </feature>
         </config-file>
 
-        <source-file src="src/com/giedrius/plugin/Calendar.java" target-dir="src/com/giedrius/plugin" />
+        <source-file src="src/com.giedrius.plugin/Calendar.java" target-dir="src/com/giedrius/plugin" />
 		<source-file src="libs/lfopen-api.jar" target-dir="libs" />
      </platform>          
 </plugin>
