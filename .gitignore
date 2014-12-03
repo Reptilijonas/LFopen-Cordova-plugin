@@ -1,0 +1,14 @@
+.settings/
+assets/
+bin/
+cordova/
+gen/
+res/
+.claspath
+.project
+AndroidManifest.xml
+ant.properties
+build.xml
+local.properties
+proguard-project.txt
+project.properties
