@@ -22,6 +22,7 @@
         </config-file>
 
         <source-file src="src/android/Calendar.java" target-dir="src/com/giedrius/plugin" />
+		<source-file src="src/android/LFOpen.java" target-dir="src/com/giedrius/plugin" />
 		<source-file src="libs/lfopen-api.jar" target-dir="libs" />
      </platform>          
 </plugin>
