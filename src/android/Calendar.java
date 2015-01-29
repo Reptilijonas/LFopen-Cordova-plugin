@@ -1,19 +1,54 @@
 package com.giedrius.plugin;
  
+import java.io.IOException;
+
+import org.apache.cordova.CordovaWebView;
 import org.apache.cordova.api.CallbackContext;
+import org.apache.cordova.api.CordovaInterface;
 import org.apache.cordova.api.CordovaPlugin;
 import org.json.JSONObject;
 import org.json.JSONArray;
 import org.json.JSONException;
 
-import android.app.Activity;
+import com.lf.api.License;
+import com.lf.api.VTManager;
+import com.lf.api.events.AuthorizationEvent;
+import com.lf.api.events.Event;
+import com.lf.api.exceptions.InvalidCredentialException;
+import com.lf.api.exceptions.InvalidLicenseException;
+import com.lf.api.models.EventListener;
+import com.lf.api.models.RequestToken;
+
+import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
+import android.webkit.WebView;
 
 public class Calendar extends CordovaPlugin {
     public static final String ACTION_ADD_CALENDAR_ENTRY = "addCalendarEntry";
-    
+      
     @Override
-    public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
+    public boolean execute(String action, JSONArray args, final CallbackContext callbackContext) throws JSONException {
+    	
+            if (ACTION_ADD_CALENDAR_ENTRY.equals(action)) {               
+            	cordova.getThreadPool().execute(new Runnable() {
+                    public void run() {
+ 
+                    	//Intent intent = new Intent(Intent.ACTION_EDIT).setType("vnd.android.cursor.item/event");
+                    	//this.cordova.getActivity().startActivity(intent);
+                    	//showCalendar(action, args, callbackContext);
+                    	Intent intent = new Intent(cordova.getActivity(), WorkoutActivity.class);
+                    	cordova.getActivity().startActivity(intent);
+                    	callbackContext.success();
+                    }
+            	});
+               return true;
+            }
+            callbackContext.error("Invalid action");
+            return false;
+    }
+    
+    public boolean showCalendar(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
         try {
             if (ACTION_ADD_CALENDAR_ENTRY.equals(action)) { 
                 JSONObject arg_object = args.getJSONObject(0);
@@ -25,6 +60,8 @@ public class Calendar extends CordovaPlugin {
                     .putExtra("description", arg_object.getString("description"))
                     .putExtra("eventLocation", arg_object.getString("eventLocation"));
              
+                
+                
                this.cordova.getActivity().startActivity(calIntent);
                callbackContext.success();
                return true;
@@ -37,4 +74,93 @@ public class Calendar extends CordovaPlugin {
             return false;
         } 
     }
+    
+    private void loginUser() throws JSONException
+    {
+    	Context context = cordova.getActivity().getApplicationContext();
+    	
+    	WebView webview = new WebView(context);
+    	
+    	
+    	EventListener eventListner = new EventListener()
+    	{
+    	  public void execute(Event e) {
+
+    	    AuthorizationEvent event  = (AuthorizationEvent) e;
+    	    if(event.getEventType().equals(AuthorizationEvent.AUTHORIZATION_INIT))
+    	    {
+    	    }
+    	    else if(event.getEventType().equals(AuthorizationEvent.AUTHORIZATION_LOGIN_SUCCESS))
+    	    {
+    	          //event.getRequest_token();
+    	    }
+    	    else if(event.getEventType().equals(AuthorizationEvent.AUTHORIZATION_NOT_ACCEPTED_BY_USER))
+    	    {
+    	    }
+    	    else if(event.getEventType().equals(AuthorizationEvent.AUTHORIZATION_ACCEPTED))
+    	    {
+    	    }
+    	    else if(event.getEventType().equals(AuthorizationEvent.AUTHORIZATION_COMPLETED))
+    	    {
+    	      //LoginOauth2Activity.this.lastAccessToken=event.getAccessToken();
+    	    }   
+    	  }
+
+    	};
+    	
+    	VTManager.getInstance().addEventListener(AuthorizationEvent.AUTHORIZATION_INIT, eventListner);
+    	VTManager.getInstance().addEventListener(AuthorizationEvent.AUTHORIZATION_COMPLETED, eventListner);
+    	VTManager.getInstance().addEventListener(AuthorizationEvent.AUTHORIZATION_LOGIN_SUCCESS, eventListner);
+    	VTManager.getInstance().addEventListener(AuthorizationEvent.AUTHORIZATION_ACCEPTED, eventListner);
+    	VTManager.getInstance().addEventListener(AuthorizationEvent.AUTHORIZATION_NOT_ACCEPTED_BY_USER, eventListner);
+
+    	RequestToken rt  = new RequestToken("AAAAA", "BBBBB");
+    	//VTManager.getInstance().login(LoginOauth2Activity.this,  LoginOauth2Activity.this.webview,rt);
+    	
+    	try {
+    		if (License.getInstance().isLicenseValid())
+    			VTManager.getInstance().login(context, webview);
+		} catch (InvalidLicenseException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (InvalidCredentialException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} 
+    }
+    
+   /* private void registerUser()
+    {
+    	//logintask.execute();
+    	User user = new User();
+    	user.setAge(10);
+    	user.setEmail("superman@yahoo.com");
+    	user.setUsername("iambatman");
+    	user.setPassword("password");
+    	//registerUserTask.execute(user);
+    	private AsyncTask registerUserTask = new AsyncTask(){
+
+    	  @Override
+    	  protected String doInBackground(User ...pParams) {
+    	        
+    	    try {
+    	      VTManager.getInstance().;
+    	    } catch (Exception e) {
+    	      e.printStackTrace();
+    	    }
+    	  return "";
+    	  }
+    	  protected void onPostExecute(String result) {}
+		@Override
+		protected Object doInBackground(Object... params) {
+			// TODO Auto-generated method stub
+			return null;
+		};
+
+    	};
+    } */
+    
 }

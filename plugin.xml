@@ -23,6 +23,7 @@
 
         <source-file src="src/android/Calendar.java" target-dir="src/com/giedrius/plugin" />
 		<source-file src="src/android/LFOpen.java" target-dir="src/com/giedrius/plugin" />
+		<source-file src="src/android/WorkoutActivity.java" target-dir="src/com/giedrius/plugin" />
 		<source-file src="libs/lfopen-api.jar" target-dir="libs" />
 		<source-file src="accessory_data.xml" target-dir="res/xml" />
      </platform>          
