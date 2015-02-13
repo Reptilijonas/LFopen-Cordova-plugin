@@ -4,6 +4,7 @@ import com.lf.api.EquipmentManager;
 import com.lf.api.License;
 
 import android.app.Activity;
+import android.app.Service;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -18,7 +19,7 @@ public class WorkoutActivity extends Activity {
 	
 	protected void onCreate(Bundle savedInstanceState) 
 	{
-		super.onCreate(savedInstanceState);
+		//super.onCreate(savedInstanceState);
 		
 		if (License.getInstance().isLicenseValid())
 		{
@@ -32,7 +33,8 @@ public class WorkoutActivity extends Activity {
 			public void onServiceConnected(ComponentName name, IBinder service) {
 				// TODO Auto-generated method stub
 				EquipmentManager.getInstance().registerObserver(cEquipment);
-			    EquipmentManager.getInstance().start();
+				// needs com.android.future.usb.UsbManager in order to run this
+			    //EquipmentManager.getInstance().start();
 			}
 			@Override
 			public void onServiceDisconnected(ComponentName name) {

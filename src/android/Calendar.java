@@ -1,11 +1,14 @@
 package com.giedrius.plugin;
  
 import java.io.IOException;
+import java.util.Map;
 
 import org.apache.cordova.CordovaWebView;
 import org.apache.cordova.api.CallbackContext;
 import org.apache.cordova.api.CordovaInterface;
 import org.apache.cordova.api.CordovaPlugin;
+import org.apache.cordova.api.PluginResult;
+import org.apache.cordova.api.PluginResult.Status;
 import org.json.JSONObject;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -18,6 +21,7 @@ import com.lf.api.exceptions.InvalidCredentialException;
 import com.lf.api.exceptions.InvalidLicenseException;
 import com.lf.api.models.EventListener;
 import com.lf.api.models.RequestToken;
+import com.lf.api.models.WorkoutStream;
 
 import android.content.Context;
 import android.content.Intent;
@@ -25,21 +29,40 @@ import android.os.AsyncTask;
 import android.webkit.WebView;
 
 public class Calendar extends CordovaPlugin {
+	
     public static final String ACTION_ADD_CALENDAR_ENTRY = "addCalendarEntry";
-      
+
+    
     @Override
     public boolean execute(String action, JSONArray args, final CallbackContext callbackContext) throws JSONException {
     	
-            if (ACTION_ADD_CALENDAR_ENTRY.equals(action)) {               
+            if (ACTION_ADD_CALENDAR_ENTRY.equals(action)) {
+
             	cordova.getThreadPool().execute(new Runnable() {
                     public void run() {
  
                     	//Intent intent = new Intent(Intent.ACTION_EDIT).setType("vnd.android.cursor.item/event");
                     	//this.cordova.getActivity().startActivity(intent);
                     	//showCalendar(action, args, callbackContext);
-                    	Intent intent = new Intent(cordova.getActivity(), WorkoutActivity.class);
-                    	cordova.getActivity().startActivity(intent);
-                    	callbackContext.success();
+                    	
+                    	//Intent intent = new Intent(cordova.getActivity(), WorkoutActivity.class);
+                    	//cordova.getActivity().startActivity(intent);
+                    	//callbackContext.success();
+                    	LFOpen lfopen = new LFOpen();
+                        JSONObject workoutJsonObj = new JSONObject();
+                        WorkoutStream workoutObj = lfopen.getWorkoutObj();
+                    	
+                    	//JSONObject workoutJsonObj = new JSONObject();
+
+						try {
+							workoutJsonObj.put("accumulatedCalories", getRoundedValue(workoutObj.getAccumulatedCalories()));
+						} catch (JSONException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						} 
+
+                    	callbackContext.sendPluginResult(new PluginResult(Status.OK, workoutJsonObj));
+                    	//callbackContext.success();
                     }
             	});
                return true;
@@ -73,6 +96,14 @@ public class Calendar extends CordovaPlugin {
             callbackContext.error(e.getMessage());
             return false;
         } 
+    }
+    
+    private double getRoundedValue(double val)
+    {
+    	val = val * 100;
+    	val = (double)((int) val);
+    	val = val / 100;
+    	return val;
     }
     
     private void loginUser() throws JSONException
