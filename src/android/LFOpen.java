@@ -2,8 +2,6 @@ package com.giedrius.plugin;
 
 import java.util.List;
 
-import org.apache.cordova.api.PluginResult;
-import org.apache.cordova.api.PluginResult.Status;
 import org.json.JSONObject;
 
 import com.lf.api.EquipmentObserver;
