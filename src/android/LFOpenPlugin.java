@@ -30,13 +30,13 @@ import android.webkit.WebView;
 
 public class LFOpenPlugin extends CordovaPlugin {
 	
-    public static final String ACTION_ADD_CALENDAR_ENTRY = "addCalendarEntry";
+    public static final String ACTION_GET_WORKOUT_OBJ = "getWorkoutObj";
 
     
     @Override
     public boolean execute(String action, JSONArray args, final CallbackContext callbackContext) throws JSONException {
     	
-            if (ACTION_ADD_CALENDAR_ENTRY.equals(action)) {
+            if (ACTION_GET_WORKOUT_OBJ.equals(action)) {
 
             	cordova.getThreadPool().execute(new Runnable() {
                     public void run() {
@@ -73,7 +73,7 @@ public class LFOpenPlugin extends CordovaPlugin {
     
     public boolean showCalendar(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
         try {
-            if (ACTION_ADD_CALENDAR_ENTRY.equals(action)) { 
+            if (ACTION_GET_WORKOUT_OBJ.equals(action)) { 
                 JSONObject arg_object = args.getJSONObject(0);
                 Intent calIntent = new Intent(Intent.ACTION_EDIT)
                     .setType("vnd.android.cursor.item/event")
