@@ -14,7 +14,7 @@ import android.content.Intent;
 import android.os.IBinder;
 import android.widget.Toast;
 
-public class LFOpen implements EquipmentObserver {
+public class LFOpenEquipmentObserver implements EquipmentObserver {
 
 	static WorkoutStream workoutObj = new WorkoutStream();
 

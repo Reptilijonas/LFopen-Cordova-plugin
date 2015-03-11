@@ -9,7 +9,7 @@
     <keywords>phonegap,calendar</keywords>
 
 
-    <js-module src="www/LFOpenPlugin.js" name="LFOpenPlugin">
+    <js-module src="www/lfopen.js" name="LFOpenPlugin">
         <clobbers target="window.calendar" />
     </js-module>
 
@@ -22,7 +22,7 @@
         </config-file>
 
         <source-file src="src/android/LFOpenPlugin.java" target-dir="src/com/giedrius/plugin" />
-		<source-file src="src/android/LFOpen.java" target-dir="src/com/giedrius/plugin" />
+		<source-file src="src/android/LFOpenEquipmentObserver.java" target-dir="src/com/giedrius/plugin" />
 		<source-file src="src/android/WorkoutActivity.java" target-dir="src/com/giedrius/plugin" />
 		<source-file src="libs/lfopen-api.jar" target-dir="libs" />
 		<source-file src="accessory_data.xml" target-dir="res/xml" />
