@@ -5,7 +5,7 @@ var lfopen = {
             errorCallback, // error callback function
             'LFOpenPlugin', // mapped to our native Java class called "LFOpenPlugin"
             'getWorkoutObj', // with this action name
-            []
+            [{}]
         ); 
     }
 }
