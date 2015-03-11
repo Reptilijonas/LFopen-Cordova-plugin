@@ -3,11 +3,12 @@ package com.giedrius.plugin;
 import java.io.IOException;
 import java.util.Map;
 
-import org.apache.cordova.CallbackContext;
-import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.CordovaWebView;
-import org.apache.cordova.PluginResult;
-import org.apache.cordova.PluginResult.Status;
+import org.apache.cordova.api.CallbackContext;
+import org.apache.cordova.api.CordovaInterface;
+import org.apache.cordova.api.CordovaPlugin;
+import org.apache.cordova.api.PluginResult;
+import org.apache.cordova.api.PluginResult.Status;
 import org.json.JSONObject;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -27,7 +28,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.webkit.WebView;
 
-public class Calendar extends CordovaPlugin {
+public class LFOpenPlugin extends CordovaPlugin {
 	
     public static final String ACTION_ADD_CALENDAR_ENTRY = "addCalendarEntry";
 
