@@ -48,14 +48,30 @@ public class LFOpenPlugin extends CordovaPlugin {
                     	//Intent intent = new Intent(cordova.getActivity(), WorkoutActivity.class);
                     	//cordova.getActivity().startActivity(intent);
                     	//callbackContext.success();
-                    	LFOpen lfopen = new LFOpen();
+                    	LFOpenEquipmentObserver lfopen = new LFOpenEquipmentObserver();
                         JSONObject workoutJsonObj = new JSONObject();
                         WorkoutStream workoutObj = lfopen.getWorkoutObj();
-                    	
-                    	//JSONObject workoutJsonObj = new JSONObject();
 
+                        // put workout details into JSON object
 						try {
 							workoutJsonObj.put("accumulatedCalories", getRoundedValue(workoutObj.getAccumulatedCalories()));
+							workoutJsonObj.put("accumulatedDistance", getRoundedValue(workoutObj.getAccumulatedDistance()));
+							workoutJsonObj.put("accumulatedDistanceClimbed", getRoundedValue(workoutObj.getAccumulatedDistanceClimbed()));
+							workoutJsonObj.put("currentHeartRate", getRoundedValue(workoutObj.getCurrentHeartRate()));
+							workoutJsonObj.put("currentIncline", getRoundedValue(workoutObj.getCurrentIncline()));
+							workoutJsonObj.put("currentLevel", getRoundedValue(workoutObj.getCurrentLevel()));
+							workoutJsonObj.put("currentResistance", getRoundedValue(workoutObj.getCurrentResistance()));
+							workoutJsonObj.put("currentSpeed", getRoundedValue(workoutObj.getCurrentSpeed()));
+							workoutJsonObj.put("currentSpeedRPM", getRoundedValue(workoutObj.getCurrentSpeedRPM()));
+							workoutJsonObj.put("targetCalories", getRoundedValue(workoutObj.getTargetCalories()));
+							workoutJsonObj.put("targetDistance", getRoundedValue(workoutObj.getTargetDistance()));
+							workoutJsonObj.put("targetDistanceClibmed", getRoundedValue(workoutObj.getTargetDistanceClibmed()));
+							workoutJsonObj.put("targetHeartRate", getRoundedValue(workoutObj.getTargetHeartRate()));
+							workoutJsonObj.put("targetIncline", getRoundedValue(workoutObj.getTargetIncline()));
+							workoutJsonObj.put("targetSpeed", getRoundedValue(workoutObj.getTargetSpeed()));
+							workoutJsonObj.put("targetWorkoutSeconds", getRoundedValue(workoutObj.getTargetWorkoutSeconds()));
+							workoutJsonObj.put("workoutElapseSeconds", getRoundedValue(workoutObj.getWorkoutElapseSeconds()));
+							workoutJsonObj.put("workoutState", workoutObj.getWorkoutState());							
 						} catch (JSONException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
@@ -98,6 +114,7 @@ public class LFOpenPlugin extends CordovaPlugin {
         } 
     }
     
+    // no need to show loads of numbers after decimal point
     private double getRoundedValue(double val)
     {
     	val = val * 100;
